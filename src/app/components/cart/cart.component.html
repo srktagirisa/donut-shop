@@ -1,0 +1,22 @@
+<h2>Shopping Cart</h2>
+
+<div *ngIf="cart.length > 0">
+<table><thead><th>Donut</th><th>Calories</th><th>Price</th></thead>
+    <tr *ngFor="let donut of cart">
+        <td>
+        <a [routerLink]="['/details', donut.id]">
+        {{ donut.name }}</a></td>
+        <td>
+        <P>{{donut?.calories}}</P></td>
+        <td>
+        <P>{{donut?.price | currency}}</P>
+        </td>
+        <td>
+            <button (click)="removeFromCart(donut)">Remove</button>
+        </td>
+    </tr>
+    <tr><p>Total Calories: {{totalCalories}}</p></tr>
+    <tr><p>Total Price: {{totalPrice}}</p></tr>
+</table>
+</div>
+<div *ngIf="cart.length === 0">Cart is empty</div>
